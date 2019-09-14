@@ -6,8 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import { FirebaseAppProvider } from 'reactfire';
 import 'firebase/performance';
 
-
-  const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBRebJ4woEHzvPM0NeG2f49c7-atJQkdmM",
     authDomain: "sample-f4a88.firebaseapp.com",
     databaseURL: "https://sample-f4a88.firebaseio.com",
@@ -22,7 +21,6 @@ import 'firebase/performance';
     </FirebaseAppProvider>,
     document.getElementById('root')
   );
-
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

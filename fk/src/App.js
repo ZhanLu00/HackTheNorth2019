@@ -24,7 +24,6 @@ function Burrito() {
 
   return <p>The burrito is {isYummy ? 'good' : 'bad'}</p>;
 }
-
 function App() {
   return (
     <div className="App">
