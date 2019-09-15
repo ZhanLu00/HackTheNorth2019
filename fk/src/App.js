@@ -10,9 +10,15 @@ import Navbar from './Components/navbar.js';
 import ChatContainer from './Components/chatcontainer.js';
 import ChatInputField from './Components/chatinputfield.js';
 
+// 100vh, 100vw
 function App(){
+  const style = {
+    height: '100%',
+    width: '100%'
+
+  }
   return (
-    <div className="App">
+    <div className="App" style={style}>
         <SuspenseWithPerf>
           <Navbar />
           <ChatContainer />

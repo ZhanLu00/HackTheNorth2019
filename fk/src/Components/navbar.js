@@ -8,8 +8,11 @@ import {
 } from 'reactfire';
 
 const Navbar = () => {
+    const style = {
+        background: '#000000'
+    };
     return (
-        <div class="uk-section-secondary">
+        <div class="uk-section-secondary" style={style}>
 
             <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark; top: 0">
 

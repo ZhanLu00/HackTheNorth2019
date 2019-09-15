@@ -1,9 +1,17 @@
 import React from 'react';
 
-const ChatContainer = () =>{
+
+
+
+const ChatContainer = ({data}) =>{
+    const style = {
+        background: '#000000'
+    };
+    var dict = {};
     return (
-        <div class="uk-section-secondary">
-            
+        
+        <div class="uk-container uk-background-secondary" uk-height-viewport="expand: true">
+            <div uk-height-viewport="offset-bottom: 22" class="uk-background-secondary" ></div>
         </div>
     );
 }
