@@ -22,7 +22,6 @@
             //this line disable the action inside of form
             event.preventDefault();
             //.val() to get the actual value of the id
-            var formName;
             var userIn = $("#userInput").val();
             // set up the form name
             theForms = document.getElementsByTagName("form");
@@ -31,7 +30,7 @@
             }
     
     
-            $("#resultV").load("action_page.php", {
+            $("#result").post( "/postmethod", {
                 //left-right is key-value, which the value just got from extract info from above
                 // JSON.stringify({formName: formName, userInput: userIn});
                 formName: formName,
