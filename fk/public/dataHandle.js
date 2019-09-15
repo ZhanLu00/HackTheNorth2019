@@ -1,106 +1,87 @@
-// $(document).ready(function(){
-//     $("form").submit(function(event){
-//         //this line disable the action inside of form
-//         event.preventDefault();
-//         //.val() to get the actual value of the id
-//         var formName;
-//         var tUnit = $("#form-tUnit").val();
-//         // set up the form name
-//         theForms = document.getElementsByTagName("form");
-//         for(i=0;i<theForms.length;i++){
-//             formName = theForms[i].name;
-//         }
+$(document).ready(function(){
+    $("form").submit(function(event){
+        //this line disable the action inside of form
+        event.preventDefault();
+        //.val() to get the actual value of the id
+        var formName;
+        var userIn = $("#userInput").val();
+        // set up the form name
+        theForms = document.getElementsByTagName("form");
+        for(i=0;i<theForms.length;i++){
+            formName = theForms[i].name;
+        }
 
 
-//         $("#resultV").load("action_page.php", {
-//             //left-right is key-value, which the value just got from extract info from above
+        $("#resultV").load("action_page.php", {
+            //left-right is key-value, which the value just got from extract info from above
+            // JSON.stringify({formName: formName, userInput: userIn});
+            formName: formName,
+            userInput: userIn
             
-//             formName: formName,
-//             tUnit: tUnit,
-//             time: time,
-//             qUnit: qUnit,
-//             flowrate: flowrate,
-//             submit: submit
-            
-//         }, function(responseTxt, statusTxt){
-//             var x =document.getElementById("resultV").innerHTML;
-//             if(statusTxt == "success"){
-//             }else if(statusTxt == "error"){
-//                 alert("Error: " + xhr.status + ": " + xhr.statusText);
-//             }else if(r.slice(r.indexOf("#")+1) == ""){
-//                 alert();
-//             }
+        }, function(responseTxt, statusTxt){
+            var x =document.getElementById("chatDisplay").innerHTML;
+            if(statusTxt == "success"){
+            }else if(statusTxt == "error"){
+                alert("Error: " + xhr.status + ": " + xhr.statusText);
+            }else if(r.slice(r.indexOf("#")+1) == ""){
+                alert();
+            }
             
             
-//         });
-
-//         function prepareForPloting(){
-//             var responseT = document.getElementById("resultV").innerHTML;
-//             var num = "";
-//             var data = [];
-//             var t_ = true;
-//             var a = [];
-
-
-//             for (i = 0; i<responseT.length; i++){
-//                 switch (responseT[i]){
-//                     case "#":
-//                     // store the output flowrate
-//                         a[0].push(Number(num));
-//                         return a;
-//                         break;
-
-//                     case "^":
-//                     // store data and clear the store array
-//                         data.push(Number(num));
-//                         num = "";
-
-//                         if (a.length == 0) {
-//                             for (let i= 0; i < data.length; i++) {
-//                                 a.push([data[i]]);
-//                             }
-//                         }else{
-//                             for (let i = 0; i<data.length; i++){
-//                                 a[i].push(data[i]);
-//                             }
-//                         }
-
-//                         data.length = 0;
-//                         break;
-                        
-//                     case "?":
-//                     // store the number
-//                         data.push(Number(num));
-//                         num = "";
-//                         break;
-
-                    
-//                     default:
-//                     // store data in string
-//                         num += responseT[i];
-//                         break;
-//                 }
-//             }
-            
-//             return a;
-//         }
-
-//         var r = document.getElementById("resultV").innerHTML;
-        
-//         var x = prepareForPloting();
+        });
 
         
-//         document.getElementById("testingData").innerHTML = x;
-//         document.getElementById("trueResult").innerHTML = r.slice(r.indexOf("#")+1);
-
 
         
-//     })
+        // function prepareDataForDisplay(fileName){
+        //     // get username
+        //     // get format
+        //     // return output string
 
-//     // //This is to check whether the php page has any error
-//     // $("button").click(function(){
-//     // 	$("#resultV").post("action_page.php");
-//     // 	alert("finished");
-//     // });
+        //     var r = JSON.parse(fileName);
+        //     var name = r[name];
+        //     if (r['type'] == "regular-text"){
+        //         return "@oj9rds94n/" + name + r['text'];
+        //     }else if (r['type'] == "td-box"){
+        //         return "Not implemented yet"
+        //     }
+        // };
 
-// });
+        function displayUserInput(uIn){
+            var block = document.createElement("p");
+            var msg = document.createTextNode("@oj9rds94n/" + name + r['text']);
+            block.appendChild(msg);
+            var element = document.getElementById("chatDisplay");
+            element.appendChild(blcok);
+            
+        }
+
+        // // get style 
+        // var r = JSON.parse(fileName);
+        // var style = r['style'];
+        // // deploy style
+        // var destination = document.getElementById("chatDisplay");
+        // destination.setAttribute("style", style);
+        // deplot content
+
+        // disply user's input first
+        displayUserInput(userIn);
+        
+        // display upstrem data
+        var re = document.getElementById("result").innerHTML;
+        var block = document.createElement("p");
+        var msg = document.createTextNode("@oj9rds94n/ " + "TDRAF: " + re);
+        block.appendChild(msg);
+        var element = document.getElementById("chatDisplay");
+        element.appendChild(blcok);
+        
+        
+    })
+
+    // //This is to check whether the php page has any error
+    // $("button").click(function(){
+    // 	$("#resultV").post("action_page.php");
+    // 	alert("finished");
+    // });
+
+});

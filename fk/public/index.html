@@ -3,17 +3,111 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+    <title>TDRFA</title>
 
-    <!-- update the version number as needed -->
+    <!-- update the version number as needed
     <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
     <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
+    <!-- <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
     <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
     <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
     <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
     <!-- initialize the SDK after all desired features are loaded -->
-    <script defer src="/__/firebase/init.js"></script>
+    <!-- <script defer src="/__/firebase/init.js"></script> --> --> -->
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $("form").submit(function(event){
+            //this line disable the action inside of form
+            event.preventDefault();
+            //.val() to get the actual value of the id
+            var formName;
+            var userIn = $("#userInput").val();
+            // set up the form name
+            theForms = document.getElementsByTagName("form");
+            for(i=0;i<theForms.length;i++){
+                formName = theForms[i].name;
+            }
+    
+    
+            $("#resultV").load("action_page.php", {
+                //left-right is key-value, which the value just got from extract info from above
+                // JSON.stringify({formName: formName, userInput: userIn});
+                formName: formName,
+                userInput: userIn
+                
+            }, function(responseTxt, statusTxt){
+                var x =document.getElementById("chatDisplay").innerHTML;
+                if(statusTxt == "success"){
+                }else if(statusTxt == "error"){
+                    alert("Error: " + xhr.status + ": " + xhr.statusText);
+                }else if(r.slice(r.indexOf("#")+1) == ""){
+                    alert();
+                }
+                
+                
+            });
+    
+            
+    
+            
+            // function prepareDataForDisplay(fileName){
+            //     // get username
+            //     // get format
+            //     // return output string
+     
+            //     var r = JSON.parse(fileName);
+            //     var name = r[name];
+            //     if (r['type'] == "regular-text"){
+            //         return "@oj9rds94n/" + name + r['text'];
+            //     }else if (r['type'] == "td-box"){
+            //         return "Not implemented yet"
+            //     }
+            // };
+              
+            document.getElementById("userInput").value = "";
+            
+            function displayUserInput(uIn){
+                var block = document.createElement("p");
+                var msg = document.createTextNode("@oj9rds94n/" + name + ":  "+ uIn);
+                block.appendChild(msg);
+                var element = document.getElementById("chatDisplay");
+                element.appendChild(block);
+                
+            }
+    
+            // // get style 
+            // var r = JSON.parse(fileName);
+            // var style = r['style'];
+            // // deploy style
+            // var destination = document.getElementById("chatDisplay");
+            // destination.setAttribute("style", style);
+            // deplot content
+    
+            // disply user's input first
+            displayUserInput(userIn);
+            
+            // display upstrem data
+            var re = document.getElementById("result").innerHTML;
+            var block = document.createElement("p");
+            var msg = document.createTextNode("@oj9rds94n/ " + "TDRAF: " + re);
+            block.appendChild(msg);
+            var element = document.getElementById("chatDisplay");
+            element.appendChild(block);
+            
+            
+        })
+    
+        // //This is to check whether the php page has any error
+        // $("button").click(function(){
+        // 	$("#resultV").post("action_page.php");
+        // 	alert("finished");
+        // });
+    
+    });
+    </script>
+    
 
     <style media="screen">
       body { background: rgb(15, 18, 20); color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
@@ -58,7 +152,10 @@
 
     <div id="ChatContainer">
         <div class="uk-container uk-background-secondary" uk-height-viewport="expand: true">
-            <div uk-height-viewport="offset-bottom: 22" class="uk-background-secondary" ></div>
+            <div uk-height-viewport="offset-bottom: 22" class="uk-background-secondary" id="chatDisplay">
+
+            </div>
+            <p style="visibility:hidden;" id="result"></p>
         </div>
     </div>
 
@@ -69,12 +166,8 @@
                     <p>@81e9df2a/{userName} $</p>
                 </div>
                 <div class="uk-container uk-width-5-6">
-                    <form class="uk-container uk-padding-small uk-padding-remove-left">
-                        <fieldset class="uk-container uk-fieldset">
-                            <div >
-                                <textarea id="userInput" class="uk-textarea" rows="1" placeholder="Enter your command here"></textarea>
-                            </div>
-                        </fieldset>
+                    <form class="uk-container uk-padding-small uk-padding-remove-left" id="form">
+                        <input id="userInput" name="userInput" class="uk-textarea" rows="1" placeholder="Enter your command here">
                         <input type="submit" style="visibility: hidden;"/>
                     </form>
                 </div>
@@ -82,14 +175,14 @@
     </div>
 
     <!-- JS Script -->
-    <script src="dataHandle.js"></script>
+    <!-- <script src="dataHandle.js"></script> -->
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.min.css" />
 
     <!-- UIkit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
-    <script>
+    <!-- <script>
       document.addEventListener('DOMContentLoaded', function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
@@ -110,6 +203,6 @@
           document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
         }
       });
-    </script>
+    </script> -->
   </body>
 </html>
