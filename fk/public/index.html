@@ -115,6 +115,7 @@
       h1 { color: rgb(27,177,76);}
       p { color: rgb(27,177,76);}
       a { color: rgb(27,177,76); display: block; text-align: center; background: #010303; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #ChatContainer {font-style:normal; font-size:12px; font-family: Arial;}
     </style>
     <title>Hack Chat</title>
   </head>
@@ -159,14 +160,17 @@
         </div>
     </div>
 
-    <div id="ChatInputField">
+    <div id="ChatInputField" style="font-size:14px;">
         <div class="uk-divider"></div>
         <div uk-grid class="uk-section-secondary uk-flex uk-padding-small uk-padding-remove-top uk-padding-remove-bottom" style="overflow: hidden; position: fixed; bottom: 0; width:100%;">
                 <div class="uk-container uk-width-1-6 uk-padding-small uk-padding-remove-right">
-                    <p>@81e9df2a/{userName} $</p>
+                  <div class="uk-container uk-width-1-2"></div>  
+                  <div class="uk-container uk-width-1-2">
+                      <p>@81e9df2a/: $</p>
+                  </div>  
                 </div>
                 <div class="uk-container uk-width-5-6">
-                    <form class="uk-container uk-padding-small uk-padding-remove-left" id="form">
+                    <form class="uk-container uk-padding-small uk-padding-remove-left" id="form" style="text-align:right;">
                         <input id="userInput" name="userInput" class="uk-textarea" rows="1" placeholder="Enter your command here">
                         <input type="submit" style="visibility: hidden;"/>
                     </form>
