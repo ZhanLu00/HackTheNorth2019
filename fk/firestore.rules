@@ -1,0 +1,11 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+    }
+    match /tryreactfire/burrito {
+  		allow read: if true;
+  		allow write: if request.auth.uid != null;
+		}
+  }
+}

@@ -1,57 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.6.1/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.6.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.6.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
     <style media="screen">
-      /* body { background: rgb(15, 18, 20); color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; } */
+      body { background: rgb(15, 18, 20); color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
       h2 { color: rgb(27,177,76);}
       h1 { color: rgb(27,177,76);}
       p { color: rgb(27,177,76);}
       a { color: rgb(27,177,76); display: block; text-align: center; background: #010303; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-
     </style>
     <title>Hack Chat</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="Navbar">
+        <div class="uk-section-secondary" style="background: #000000">
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+            <div uk-sticky="animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark; top: 0">
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+                <nav class="uk-navbar-container">
+                    <div class="uk-container uk-container-expand">
+                        <div uk-navbar>
+
+                            <ul class="uk-navbar-nav">
+                                <li class="uk-active"><a href="#">CLI CHAT</a></li>
+                                <li>
+                                    <a href="#">User</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li class="uk-active"><a href="#">Active</a></li>
+                                            <li><a href="#">Item</a></li>
+                                            <li><a href="#">Item</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="index.html">Exit</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div id="ChatContainer">
+        <div class="uk-container uk-background-secondary" uk-height-viewport="expand: true">
+            <div uk-height-viewport="offset-bottom: 22" class="uk-background-secondary" ></div>
+        </div>
+    </div>
+
+    <div id="ChatInputField">
+        <div class="uk-divider"></div>
+        <div uk-grid class="uk-section-secondary uk-flex uk-padding-small uk-padding-remove-top uk-padding-remove-bottom" style="overflow: hidden; position: fixed; bottom: 0; width:100%;">
+                <div class="uk-container uk-width-1-6 uk-padding-small uk-padding-remove-right">
+                    <p>@81e9df2a/{userName} $</p>
+                </div>
+                <div class="uk-container uk-width-5-6">
+                    <form class="uk-container uk-padding-small uk-padding-remove-left">
+                        <fieldset class="uk-container uk-fieldset">
+                            <div >
+                                <textarea id="userInput" class="uk-textarea" rows="1" placeholder="Enter your command here"></textarea>
+                            </div>
+                        </fieldset>
+                        <input type="submit" style="visibility: hidden;"/>
+                    </form>
+                </div>
+        </div>
+    </div>
+
+    <!-- JS Script -->
+    <script src="dataHandle.js"></script>
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.min.css" />
 
     <!-- UIkit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+        try {
+          let app = firebase.app();
+          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
+          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
+        }
+      });
+    </script>
   </body>
 </html>
