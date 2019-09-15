@@ -37,7 +37,7 @@ $(document).ready(function(){
         //     // get username
         //     // get format
         //     // return output string
-
+ 
         //     var r = JSON.parse(fileName);
         //     var name = r[name];
         //     if (r['type'] == "regular-text"){
